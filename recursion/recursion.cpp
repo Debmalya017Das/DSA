@@ -19,6 +19,19 @@ void rec2(int i, int n)
     // cout << "backtracking "; // getting the decrement outputs by using +
     cout << i << " ";
 }
+
+// parameterized rec
+
+void rec3(int i, int n)
+{
+    if (i < 0)
+    {
+        cout << n << endl;
+        return;
+    }
+
+    rec3(i - 1, n + i);
+}
 int main()
 {
     int n;
@@ -28,5 +41,7 @@ int main()
     rec1(n, n);
     cout << "Outputs of 2nd func :";
     rec2(0, n);
+    cout << "Sum using parameterized rec: ";
+    rec3(n, 0);
     return 0;
 }
