@@ -1,16 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void dfs(unordered_map<char, vector<char>> g, char x)
+void bfs(unordered_map<char, vector<char>> g, char a)
 {
-    stack<char> st;
-    st.push(x);
-    cout << "DFS seq: " << endl;
-    ;
-    while (st.size() > 0)
+    queue<char> q;
+    q.push(a);
+    cout << "BFS seq : " << endl;
+    while (q.size() > 0)
     {
-        char curr = st.top();
-        st.pop();
+        char curr = q.front();
+        q.pop();
         cout << curr << ' ';
 
         for (auto i : g)
@@ -19,7 +18,7 @@ void dfs(unordered_map<char, vector<char>> g, char x)
             {
                 for (auto j : i.second)
                 {
-                    st.push(j);
+                    q.push(j);
                 }
             }
         }
@@ -34,6 +33,5 @@ int main()
     g['b'].push_back('d');
     g['c'].push_back('e');
     g['d'].push_back('f');
-    dfs(g, 'a');
-    cout << endl;
+    bfs(g, 'a');
 }
