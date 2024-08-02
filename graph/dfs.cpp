@@ -26,6 +26,21 @@ void dfs(unordered_map<char, vector<char>> g, char x)
     }
 }
 
+void dfsrec(unordered_map<char, vector<char>> g, char x)
+{
+    cout << x << ' ';
+    for (auto i : g)
+    {
+        if (i.first == x)
+        {
+            for (auto j : i.second)
+            {
+                dfsrec(g, j);
+            }
+        }
+    }
+}
+
 int main()
 {
     unordered_map<char, vector<char>> g;
@@ -34,6 +49,7 @@ int main()
     g['b'].push_back('d');
     g['c'].push_back('e');
     g['d'].push_back('f');
-    dfs(g, 'a');
+    // dfs(g, 'a');
+    dfsrec(g, 'a');
     cout << endl;
 }
