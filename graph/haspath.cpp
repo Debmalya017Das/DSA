@@ -31,7 +31,7 @@ bool haspath(unordered_map<char, vector<char>> g, char s, char d)
     {
         char curr = q.front();
         q.pop();
-        if (s == d)
+        if (curr == d)
             return 1;
         for (auto i : g)
         {
