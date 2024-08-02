@@ -12,15 +12,9 @@ void bfs(unordered_map<char, vector<char>> g, char a)
         q.pop();
         cout << curr << ' ';
 
-        for (auto i : g)
+        for (auto i : g[curr])
         {
-            if (i.first == curr)
-            {
-                for (auto j : i.second)
-                {
-                    q.push(j);
-                }
-            }
+            q.push(i);
         }
     }
 }

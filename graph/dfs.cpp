@@ -13,15 +13,9 @@ void dfs(unordered_map<char, vector<char>> g, char x)
         st.pop();
         cout << curr << ' ';
 
-        for (auto i : g)
+        for (auto i : g[curr])
         {
-            if (i.first == curr)
-            {
-                for (auto j : i.second)
-                {
-                    st.push(j);
-                }
-            }
+            st.push(i);
         }
     }
 }
@@ -29,15 +23,9 @@ void dfs(unordered_map<char, vector<char>> g, char x)
 void dfsrec(unordered_map<char, vector<char>> g, char x)
 {
     cout << x << ' ';
-    for (auto i : g)
+    for (auto i : g[x])
     {
-        if (i.first == x)
-        {
-            for (auto j : i.second)
-            {
-                dfsrec(g, j);
-            }
-        }
+        dfsrec(g, i);
     }
 }
 

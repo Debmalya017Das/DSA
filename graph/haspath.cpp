@@ -1,55 +1,49 @@
 #include <bits/stdc++.h>
 using namespace std;
 // dfs
+bool haspath(unordered_map<char, vector<char>> g, char s, char d)
+{
+    if (s == d)
+        return 1;
+    for (auto i : g[s])
+    {
+
+        if (haspath(g, i, d) == 1)
+        {
+            return 1;
+        }
+        return 0;
+    }
+}
+// bfs
 // bool haspath(unordered_map<char, vector<char>> g, char s, char d)
 // {
-//     if (s == d)
-//         return 1;
-//     for (auto i : g)
+
+//     queue<char> q;
+//     q.push(s);
+//     while (q.size() > 0)
 //     {
-//         if (i.first == s)
+//         char curr = q.front();
+//         q.pop();
+//         if (curr == d)
+//             return 1;
+//         for (auto i : g)
 //         {
-//             for (auto j : i.second)
+//             if (i.first == s)
 //             {
-//                 if (haspath(g, j, d) == 1)
+//                 for (auto j : i.second)
 //                 {
-//                     return 1;
+//                     if (haspath(g, j, d) == 1)
+//                     {
+//                         return 1;
+//                     }
 //                 }
 //             }
 //         }
 //     }
+
 //     return 0;
 // }
-
-// bfs
-bool haspath(unordered_map<char, vector<char>> g, char s, char d)
-{
-
-    queue<char> q;
-    q.push(s);
-    while (q.size() > 0)
-    {
-        char curr = q.front();
-        q.pop();
-        if (curr == d)
-            return 1;
-        for (auto i : g)
-        {
-            if (i.first == s)
-            {
-                for (auto j : i.second)
-                {
-                    if (haspath(g, j, d) == 1)
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
-    }
-
-    return 0;
-}
 int main()
 {
     unordered_map<char, vector<char>> g;
@@ -59,5 +53,5 @@ int main()
     g['c'].push_back('e');
     g['d'].push_back('f');
 
-    cout << haspath(g, 'c', 'f');
+    cout << haspath(g, 'a', 'f');
 }
