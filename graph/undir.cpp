@@ -22,11 +22,10 @@ bool path(unordered_map<char, vector<char>> g, char s, char d, set<char> vis)
 {
     if (s == d)
         return true;
-    for (auto i : vis)
-    {
-        if (vis.find(s) != vis.end())
-            return false;
-    }
+
+    if (vis.find(s) != vis.end())
+        return false;
+
     vis.insert(s);
 
     cout << "visited: ";
